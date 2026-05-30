@@ -48,7 +48,7 @@ services:
       - name: SUPPORT_GROUP
         value: ""
 
-      - name: START_ANIMATION
+      - name: START_ANIMATIONS
         value: "https://telegra.ph/file/1a3c152717eb9d2e94dc2.mp4"
 
       - name: PING_IMG_URL
