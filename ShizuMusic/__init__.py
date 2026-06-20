@@ -1,5 +1,5 @@
 # --------------------------------------------------------------------------------
-#  kriti Music © 2026
+#  kritiMusic © 2026
 #  Developed by happy ❤️
 #
 #  Unauthorized copying, editing, re-uploading or removing credits
