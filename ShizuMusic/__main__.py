@@ -1,6 +1,6 @@
 # --------------------------------------------------------------------------------
-#  ShizuMusic © 2026
-#  Developed by Bad Munda ❤️
+#  KritiMusic © 2026
+#  Status: Active
 #
 #  Unauthorized copying, editing, re-uploading or removing credits
 #  from this source code is strictly prohibited.
@@ -20,8 +20,8 @@ from pyrogram import idle
 from pyrogram.types import BotCommand
 
 import config
-from ShizuMusic import LOGGER, assistant, bot, call_py
-from ShizuMusic.modules import ALL_MODULES
+from KritiMusic import LOGGER, assistant, bot, call_py
+from KritiMusic.modules import ALL_MODULES
 
 ASSISTANT_USERNAME: str = ""
 
@@ -32,7 +32,7 @@ _flask = Flask(__name__)
 
 @_flask.route("/")
 def _home():
-    return "❍ ꜱʜɪᴢᴜᴍᴜꜱɪᴄ ɪꜱ ʀᴜɴɴɪɴɢ ᴍᴀᴅᴇ ʙʏ ʙᴀᴅᴍᴜɴᴅᴀ 💕", 200
+    return "❍ ᴋʀɪᴛɪᴍᴜsɪᴄ ɪs ʀᴜɴɴɪɴɢ ✧ ʜɪᴅᴅᴇɴ 💕", 200
 
 
 @_flask.route("/health")
@@ -65,9 +65,9 @@ async def _notify_owner(me, assistant_username: str) -> None:
     try:
         await bot.send_message(
             config.LOGGER_ID,
-            f"🎵 ꜱʜɪᴢᴜᴍᴜꜱɪᴄ ꜱᴛᴀʀᴛᴇᴅ💕\n\n"
+            f"🎵 ᴋʀɪᴛɪᴍᴜsɪᴄ sᴛᴀʀᴛᴇᴅ 💕\n\n"
             f"❍ ʙᴏᴛ : @{me.username}\n"
-            f"❍ ᴀꜱꜱɪꜱᴛᴀɴᴛ : @{assistant_username}",
+            f"❍ ᴀs sɪsᴛᴀɴᴛ : @{assistant_username}",
         )
     except Exception as e:
         LOGGER.warning(f"Logger Notification Error : {e}")
@@ -79,7 +79,7 @@ if __name__ == "__main__":
 
     # 1. MongoDB
     try:
-        from ShizuMusic.utils.db import start_mongo
+        from KritiMusic.utils.db import start_mongo
         ok = start_mongo()
         if ok:
             LOGGER.info("MongoDB ready.")
@@ -152,7 +152,7 @@ if __name__ == "__main__":
 
     # 8. Block middleware — MUST run before plugins load
     try:
-        from ShizuMusic.utils.decorators import register_block_middleware
+        from KritiMusic.utils.decorators import register_block_middleware
         register_block_middleware()
         LOGGER.info("Block middleware registered")
     except Exception as e:
@@ -161,14 +161,14 @@ if __name__ == "__main__":
     # 9. Load modules
     for mod in ALL_MODULES:
         try:
-            importlib.import_module(f"ShizuMusic.modules.{mod}")
+            importlib.import_module(f"KritiMusic.modules.{mod}")
             LOGGER.info(f"Loaded module: {mod}")
         except Exception as e:
             LOGGER.error(f"Failed to load module {mod}: {e}")
 
     # 10. Stream-end handler
     try:
-        import ShizuMusic.core.call  # noqa: F401
+        import KritiMusic.core.call  # noqa: F401
     except Exception as e:
         LOGGER.error(f"Failed to load call handler: {e}")
 
@@ -177,11 +177,11 @@ if __name__ == "__main__":
     loop.run_until_complete(_notify_owner(me, ASSISTANT_USERNAME))
 
     # 12. Watchdog
-    from ShizuMusic.core.watcher import watchdog
+    from KritiMusic.core.watcher import watchdog
     loop.create_task(watchdog())
     LOGGER.info("Watchdog started")
 
-    LOGGER.info("ShizuMusic is running")
+    LOGGER.info("KritiMusic is running")
 
     idle()
 
@@ -196,5 +196,5 @@ if __name__ == "__main__":
     except Exception:
         pass
 
-    LOGGER.info("✧ ShizuMusic stopped ✧")
-            
+    LOGGER.info("✧ KritiMusic stopped ✧")
+    
